@@ -1,0 +1,83 @@
+{
+  "info": {
+    "name": "MovePal ML API",
+    "description": "Traffic congestion prediction API for Lagos, Nigeria",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "API Info",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:5001/",
+          "protocol": "http",
+          "host": ["127", "0", "0", "1"],
+          "port": "5001",
+          "path": [""]
+        }
+      }
+    },
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:5001/health",
+          "protocol": "http",
+          "host": ["127", "0", "0", "1"],
+          "port": "5001",
+          "path": ["health"]
+        }
+      }
+    },
+    {
+      "name": "Predict Current Traffic",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"lat\": 6.5244, \"lng\": 3.3792}"
+        },
+        "url": {
+          "raw": "http://127.0.0.1:5001/predict/now",
+          "protocol": "http",
+          "host": ["127", "0", "0", "1"],
+          "port": "5001",
+          "path": ["predict", "now"]
+        }
+      }
+    },
+    {
+      "name": "Predict Custom Time",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"lat\": 6.5244, \"lng\": 3.3792, \"hour\": 14, \"day_of_week\": 2}"
+        },
+        "url": {
+          "raw": "http://127.0.0.1:5001/predict",
+          "protocol": "http",
+          "host": ["127", "0", "0", "1"],
+          "port": "5001",
+          "path": ["predict"]
+        }
+      }
+    }
+  ]
+}
