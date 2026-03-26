@@ -26,7 +26,15 @@ def train_model() -> dict[str, Any]:
     dataset = build_training_dataset()
     X = dataset[FEATURE_COLUMNS]
     y = dataset["label"]
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.20, random_state=42, stratify=y)
+    label_counts = y.value_counts()
+    stratify_target = y if int(label_counts.min()) >= 2 else None
+    X_train, X_test, y_train, y_test = train_test_split(
+        X,
+        y,
+        test_size=0.20,
+        random_state=42,
+        stratify=stratify_target,
+    )
     model = RandomForestClassifier(
         n_estimators=200,
         max_depth=12,

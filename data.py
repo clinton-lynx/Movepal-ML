@@ -149,25 +149,36 @@ def fetch_tomtom_flow(lat: float, lng: float) -> dict[str, Any]:
 
 
 def fetch_open_meteo(lat: float, lng: float) -> dict[str, Any]:
-    response = requests.get(
-        "https://api.open-meteo.com/v1/forecast",
-        params={
-            "latitude": lat,
-            "longitude": lng,
-            "current": "temperature_2m,precipitation,rain,cloud_cover",
-            "timezone": "Africa/Lagos",
-            "forecast_days": 1,
-        },
-        timeout=20,
-    )
-    response.raise_for_status()
-    payload = response.json().get("current", {})
-    return {
-        "temperature_2m": float(payload.get("temperature_2m", 0.0)),
-        "precipitation": float(payload.get("precipitation", 0.0)),
-        "rain": float(payload.get("rain", 0.0)),
-        "cloud_cover": float(payload.get("cloud_cover", 0.0)),
-    }
+    def neutral_weather() -> dict[str, Any]:
+        return {
+            "temperature_2m": 27.0,
+            "precipitation": 0.0,
+            "rain": 0.0,
+            "cloud_cover": 50.0,
+        }
+
+    try:
+        response = requests.get(
+            "https://api.open-meteo.com/v1/forecast",
+            params={
+                "latitude": lat,
+                "longitude": lng,
+                "current": "temperature_2m,precipitation,rain,cloud_cover",
+                "timezone": "Africa/Lagos",
+                "forecast_days": 1,
+            },
+            timeout=20,
+        )
+        response.raise_for_status()
+        payload = response.json().get("current", {})
+        return {
+            "temperature_2m": float(payload.get("temperature_2m", 27.0)),
+            "precipitation": float(payload.get("precipitation", 0.0)),
+            "rain": float(payload.get("rain", 0.0)),
+            "cloud_cover": float(payload.get("cloud_cover", 50.0)),
+        }
+    except requests.RequestException:
+        return neutral_weather()
 
 
 def compute_traffic_pressure(current_speed: float, free_flow_speed: float) -> float:
@@ -315,15 +326,19 @@ def load_observations() -> pd.DataFrame:
     return pd.read_csv(OBSERVATIONS_FILE)
 
 
-def build_training_dataset(min_rows: int = 200) -> pd.DataFrame:
+def build_training_dataset(min_rows: int = 1000, min_heavy_rows: int = 40) -> pd.DataFrame:
     observations = load_observations()
     if observations.empty:
         observations = collect_station_snapshot()
     dataset = observations.copy()
-    if len(dataset) < min_rows:
+    label_counts = dataset["label"].value_counts() if "label" in dataset.columns else {}
+    heavy_rows = int(label_counts.get("heavy", 0)) if hasattr(label_counts, 'get') else 0
+    should_expand = len(dataset) < min_rows or heavy_rows < min_heavy_rows
+    if should_expand:
         expanded_rows: list[dict[str, Any]] = []
-        hours = [6, 8, 12, 15, 17, 20, 23]
-        day_bands = [0, 2, 4, 5, 6]
+        hours = [5, 6, 7, 8, 9, 12, 15, 16, 17, 18, 19, 20, 23]
+        day_bands = [0, 1, 2, 3, 4, 5, 6]
+        traffic_boost_hours = {6, 7, 8, 9, 16, 17, 18, 19, 20}
         for row in dataset.to_dict("records"):
             for sample_hour in hours:
                 for sample_day in day_bands:
@@ -331,8 +346,11 @@ def build_training_dataset(min_rows: int = 200) -> pd.DataFrame:
                     clone["hour"] = sample_hour
                     clone["day_of_week"] = sample_day
                     clone["is_weekend"] = int(sample_day >= 5)
+                    boosted_pressure = float(clone["traffic_pressure"])
+                    if sample_hour in traffic_boost_hours and float(clone["busy_factor"]) >= 0.6:
+                        boosted_pressure = min(1.0, boosted_pressure + 0.18)
                     score = compute_people_congestion_score(
-                        traffic_pressure=float(clone["traffic_pressure"]),
+                        traffic_pressure=boosted_pressure,
                         busy_factor=float(clone["busy_factor"]),
                         transfer_score=int(clone["transfer_score"]),
                         route_overlap_count=int(clone["route_overlap_count"]),
@@ -344,6 +362,7 @@ def build_training_dataset(min_rows: int = 200) -> pd.DataFrame:
                         day_of_week=sample_day,
                         rain=float(clone["rain"]),
                     )
+                    clone["traffic_pressure"] = boosted_pressure
                     clone["crowd_score"] = score
                     clone["label"] = score_to_label(score)
                     expanded_rows.append(clone)
