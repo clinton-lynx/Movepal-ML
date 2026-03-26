@@ -1,0 +1,84 @@
+station_id,station_name,lat,lng,corridor,corridor_type,station_role,is_terminal,is_interchange,station_importance,busy_factor,route_overlap_count,transfer_score,land_use_type,near_market,near_business_district,tomtom_supported,tomtom_status
+oshodi_terminal,Oshodi Terminal,6.557,3.35,General,primary,terminal,1,1,5,0.9,3,5,mixed,0,0,1,ok
+mile_2,Mile 2,6.4698,3.3023,General,primary,terminal,1,1,5,0.85,3,5,market,1,0,1,ok
+ikeja_under_bridge,Ikeja Under Bridge,6.5958,3.3403,General,primary,interchange,0,1,4,0.6,3,5,business,0,1,1,ok
+ojota,Ojota,6.5952,3.3831,General,primary,interchange,0,1,4,0.7,3,5,mixed,0,0,1,ok
+berger,Berger,6.6349,3.3782,General,primary,interchange,0,1,3,0.55,3,5,mixed,0,0,1,ok
+cms_marina,CMS Marina,6.4505,3.3958,General,primary,terminal,1,1,2,0.4,3,5,business,0,1,1,ok
+johnson_street,Johnson Street,6.54318,3.377831,General,local,standard,0,0,3,0.5,1,2,mixed,0,0,1,ok
+abule_oja,Abule Oja,6.517238,3.38274,General,local,standard,0,0,3,0.48,1,2,market,1,0,1,ok
+spencer_bus_station,Spencer Bus Station,6.502029100000001,3.377223,General,local,terminal,1,0,3,0.45,3,5,mixed,0,0,1,ok
+iyana_oworo,Iyana Oworo,6.546217,3.3980625,General,local,interchange,0,1,3,0.52,3,5,mixed,0,0,1,ok
+laide,Laide,6.539657,3.392462999999999,General,local,standard,0,0,3,0.5,1,2,mixed,0,0,1,ok
+olorunsogo,Olorunsogo,6.5351119,3.3525065,General,local,standard,0,0,3,0.5,1,2,mixed,0,0,1,ok
+bajulaiye,Bajulaiye,6.533379,3.383108,General,local,standard,0,0,3,0.5,1,2,mixed,0,0,1,ok
+iyana_church,Iyana Church,6.501030000000001,3.38976,General,local,standard,0,0,3,0.5,1,2,residential,0,0,1,ok
+lawal,Lawal,6.514756999999999,3.35599,General,local,standard,0,0,3,0.5,1,2,mixed,0,0,1,ok
+st_timothy,St Timothy,6.507482,3.387555,General,local,standard,0,0,3,0.5,1,2,mixed,0,0,1,ok
+lady_lak,Lady Lak,6.539136999999999,3.384637,General,local,standard,0,0,3,0.5,1,2,mixed,0,0,1,ok
+alausa,Alausa,6.6174604,3.3594836,General,local,interchange,0,1,3,0.52,3,5,business,0,1,1,ok
+gbagada,Gbagada,6.548821,3.388359,General,secondary,interchange,0,1,3,0.58,3,5,mixed,0,0,1,ok
+unilag_gate_university_road,Unilag Gate (University Road),6.517602999999999,3.384831999999999,General,local,standard,0,0,3,0.5,1,2,education,0,0,1,ok
+chemist_bus_stop,Chemist Bus Stop,6.529058999999998,3.3804765,General,local,standard,0,0,3,0.5,1,2,mixed,0,0,1,ok
+waec_bus_station,WAEC Bus Station,6.517698800000001,3.371279200000001,General,local,terminal,1,0,3,0.5,3,5,mixed,0,0,1,ok
+abule_oja_2,Abule Oja,6.51703,3.381541,General,local,standard,0,0,3,0.48,1,2,market,1,0,1,ok
+new_hall,New Hall,6.519029,3.392297,General,local,standard,0,0,3,0.5,1,2,education,0,0,1,ok
+iju_train_station,Iju Train Station,6.6610851,3.3200146,General,local,terminal,1,0,3,0.52,3,5,mixed,0,0,1,ok
+okesuna,Okesuna,6.533609999999999,3.379921,General,local,standard,0,0,3,0.5,1,2,mixed,0,0,1,ok
+yabatech_main_gate,Yabatech Main Gate,6.519164,3.371761,General,secondary,standard,0,0,3,0.5,1,2,education,0,0,1,ok
+abidoun,Abidoun,6.499777,3.388271,General,local,standard,0,0,3,0.5,1,2,mixed,0,0,1,ok
+mushin,Mushin,6.529851699999998,3.353364999999999,General,local,interchange,0,1,4,0.6,3,5,market,1,0,1,ok
+olosha_bus_stop,Olosha Bus Stop,6.526432,3.358003,General,local,standard,0,0,3,0.5,1,2,mixed,0,0,1,ok
+jibowu_bus_stop,Jibowu Bus Stop,6.519979999999999,3.367309,General,local,interchange,0,1,3,0.56,3,5,mixed,0,0,1,ok
+ayilara,Ayilara,6.510533000000001,3.36117,General,local,standard,0,0,3,0.5,1,2,mixed,0,0,1,ok
+alagomeji,Alagomeji,6.499767,3.378309,General,local,standard,0,0,3,0.5,1,2,mixed,0,0,1,ok
+alagomeji_bus_station,Alagomeji Bus Station,6.4997771,3.3781725,General,local,terminal,1,0,3,0.5,3,5,mixed,0,0,1,ok
+onipanu,Onipanu,6.532926000000001,3.367368,General,secondary,interchange,0,1,3,0.56,3,5,mixed,0,0,1,ok
+onipanu_2,Onipanu,6.532806000000001,3.3671,General,secondary,interchange,0,1,3,0.56,3,5,mixed,0,0,1,ok
+palmgrove_bariga,Palmgrove Bariga,6.541820999999999,3.368328,General,secondary,interchange,0,1,3,0.55,3,5,residential,0,0,1,ok
+igbobi,Igbobi,6.530229,3.367605,General,local,standard,0,0,3,0.5,1,2,mixed,0,0,1,ok
+charly_boy_bus_stop,Charly Boy Bus Stop,6.548371899999999,3.3787432,General,local,interchange,0,1,3,0.5,3,5,mixed,0,0,1,ok
+unilag_shuttle_bariga,Unilag Shuttle Bariga,6.534617999999999,3.391877999999999,General,local,standard,0,0,3,0.5,1,2,education,0,0,1,ok
+idi_araba,Idi Araba,6.516742,3.354085,General,local,standard,0,0,3,0.5,1,2,mixed,0,0,1,ok
+underbridge_mosalashi,Underbridge (Mosalashi),6.517128,3.368726,General,local,standard,0,0,3,0.5,1,2,mixed,0,0,1,ok
+yaba_station,Yaba Station,6.510681999999999,3.370865999999999,General,secondary,interchange,0,1,4,0.65,3,5,mixed,0,0,1,ok
+ojuelegba,Ojuelegba,6.511566999999999,3.363344999999999,General,primary,interchange,0,1,4,0.62,3,5,mixed,0,0,1,ok
+muritala,Muritala,6.543013999999999,3.393567999999999,General,local,standard,0,0,3,0.5,1,2,mixed,0,0,1,ok
+nsik_motors_limited_aktc_ojuelegba,"Nsik Motors Limited (Aktc), Ojuelegba",6.510032000000001,3.3623336,General,primary,standard,0,0,3,0.5,1,2,mixed,0,0,1,ok
+church,Church,6.530596999999999,3.378789,General,local,standard,0,0,3,0.5,1,2,residential,0,0,1,ok
+unilag_gate_akoka_road,Unilag Gate (Akoka Road),6.517867000000001,3.384795,General,local,standard,0,0,3,0.5,1,2,education,0,0,1,ok
+obanikoro,Obanikoro,6.546717999999998,3.367314,General,secondary,interchange,0,1,3,0.57,3,5,mixed,0,0,1,ok
+sungas,Sungas,6.535856999999999,3.38897,General,local,standard,0,0,3,0.5,1,2,mixed,0,0,1,ok
+ojuelegba_bus_station,Ojuelegba Bus Station,6.510317,3.3626533,General,primary,terminal,1,1,4,0.62,3,5,mixed,0,0,1,ok
+mfm_gate,Mfm Gate,6.509885,3.385634,General,local,standard,0,0,3,0.5,1,2,mixed,0,0,1,ok
+alade_bus_stop,Alade Bus Stop,6.6019546,3.3538821,General,local,standard,0,0,3,0.5,1,2,mixed,0,0,1,ok
+ibidun,Ibidun,6.51072,3.360529999999999,General,local,standard,0,0,3,0.5,1,2,mixed,0,0,1,ok
+st_finbarrs,St Finbarrs,6.522098,3.385506,General,local,standard,0,0,3,0.5,1,2,mixed,0,0,1,ok
+unilag,Unilag,6.517568199999999,3.3855674,General,local,standard,0,0,3,0.5,1,2,education,0,0,1,ok
+gbagada_2,Gbagada,6.5491486,3.3881944,General,secondary,interchange,0,1,3,0.58,3,5,mixed,0,0,1,ok
+fadeyi_bus_stop,Fadeyi Bus Stop,6.522983799999999,3.3678074,General,secondary,interchange,0,1,3,0.54,3,5,mixed,0,0,1,ok
+ojuelegba_2,Ojuelegba,6.510960600000001,3.362959,General,primary,interchange,0,1,4,0.62,3,5,mixed,0,0,1,ok
+sport_centre,Sport Centre,6.517343999999999,3.387760999999999,General,local,standard,0,0,3,0.5,1,2,education,0,0,1,ok
+temple,Temple,6.540592,3.392753,General,local,standard,0,0,3,0.5,1,2,mixed,0,0,1,ok
+fadeyi,Fadeyi,6.523944999999999,3.367264,General,secondary,interchange,0,1,3,0.54,3,5,mixed,0,0,1,ok
+somolu_oja_market,Somolu Oja (Market),6.533655999999999,3.376522,General,local,standard,0,0,3,0.5,1,2,market,1,0,1,ok
+anthony,Anthony,6.5583349,3.3669222,General,local,interchange,0,1,3,0.5,3,5,mixed,0,0,1,ok
+adekunle_bus_stop,Adekunle Bus Stop,6.492854899999999,3.3785775,General,local,standard,0,0,3,0.46,1,2,mixed,0,0,1,ok
+spencer,Spencer,6.502256,3.377359,General,local,standard,0,0,3,0.5,1,2,mixed,0,0,1,ok
+st_agnes,St Agnes,6.511242,3.377295,General,local,standard,0,0,3,0.5,1,2,residential,0,0,1,ok
+empire,Empire,6.518226899999999,3.365297,General,local,standard,0,0,3,0.5,1,2,mixed,0,0,1,ok
+obanikoro_2,Obanikoro,6.546634300000001,3.3669012,General,secondary,interchange,0,1,3,0.57,3,5,mixed,0,0,1,ok
+iwaya_garage,Iwaya Garage,6.505861000000001,3.391235,General,local,standard,0,0,3,0.5,1,2,mixed,0,0,1,ok
+empire_2,Empire,6.51826,3.36554,General,local,standard,0,0,3,0.5,1,2,mixed,0,0,1,ok
+barracks,Barracks,6.505219,3.363804,General,local,standard,0,0,3,0.5,1,2,mixed,0,0,1,ok
+ap_club,Ap Club,6.499018,3.376046999999999,General,local,standard,0,0,3,0.5,1,2,mixed,0,0,1,ok
+church_2,Church,6.505691,3.38756,General,local,standard,0,0,3,0.5,1,2,residential,0,0,1,ok
+cappa,Cappa,6.547649499999999,3.3549165,General,local,standard,0,0,3,0.5,1,2,mixed,0,0,1,ok
+fadeyi_2,Fadeyi,6.524166,3.367736,General,secondary,interchange,0,1,3,0.54,3,5,mixed,0,0,1,ok
+atunrase,Atunrase,6.51378,3.35761,General,local,standard,0,0,3,0.5,1,2,mixed,0,0,1,ok
+g_u_o_transport_maza_maza_terminal,G.U.O. Transport - Maza-Maza Terminal,6.459200099999999,3.3019669,General,local,terminal,1,0,4,0.68,3,5,mixed,0,0,1,ok
+onipanu_3,Onipanu,6.533651099999999,3.3672085,General,secondary,interchange,0,1,3,0.56,3,5,mixed,0,0,1,ok
+adesina,Adesina,6.53441,3.384873,General,local,standard,0,0,3,0.5,1,2,mixed,0,0,1,ok
+bariga,Bariga,6.537239999999999,3.392039999999999,General,local,standard,0,0,3,0.5,1,2,residential,0,0,1,ok
+onike,Onike,6.509512,3.384132,General,local,standard,0,0,3,0.5,1,2,residential,0,0,1,ok
+palmgrove,Palmgrove,6.541618,3.3674,General,secondary,interchange,0,1,3,0.55,3,5,mixed,0,0,1,ok
