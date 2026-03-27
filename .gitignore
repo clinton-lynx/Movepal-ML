@@ -4,6 +4,4 @@ __pycache__/
 venv/
 env/
 model.pkl
-data/observations.csv
-data/training_dataset.csv
 .env

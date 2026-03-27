@@ -1,93 +1,79 @@
 # MovePal ML Prediction Service v2
 
-This version upgrades the original synthetic-data approach into a hackathon-friendly real-data pipeline:
+Predicts congestion levels at BRT stations using live traffic and weather data with a Random Forest classifier.
 
-- station intelligence in `stations_master.csv`
-- live TomTom traffic flow
-- live Open-Meteo weather
-- a people-congestion scoring layer that bootstraps labels
-- a Random Forest classifier behind a Flask API
+## How the Prediction Model Works
 
-## Project location
+1. **Data Sources**:
+   - Station master data from `stations_master.csv` (location, importance, type)
+   - Live traffic flow from TomTom API (current/free flow speeds, confidence)
+   - Live weather from Open-Meteo API (rain, precipitation, temperature, cloud cover)
 
-`C:\Users\USER\Documents\Python Project\movepal-ml-2`
+2. **Feature Engineering**:
+   - Station features: lat/lng, terminal/interchange status, busy factor, transfer score, land use
+   - Time features: hour, day of week, weekend flag
+   - Traffic features: speed ratios, pressure metrics
+   - Weather features: precipitation, temperature
 
-## Files
+3. **Label Bootstrapping**:
+   - Congestion labels (low/medium/high) generated from traffic pressure and station busy factors
+   - No manual labeling required
 
-- `app.py` - Flask API
-- `data.py` - data fetching, dataset building, station logic
-- `model.py` - training and prediction
-- `train.py` - run model training
-- `stations_master.csv` - station master data used for training and live predictions
+4. **Model Training**:
+   - Random Forest classifier with balanced class weights
+   - Trained on expanded dataset from collected observations
+
+5. **Prediction**:
+   - Input: latitude, longitude, hour, day of week
+   - Finds nearest station
+   - Fetches live traffic/weather data
+   - Outputs congestion status with confidence and class probabilities
 
 ## Setup
 
-```powershell
-python -m venv .venv
-.venv\Scripts\activate
-pip install -r requirements.txt
-```
+1. Create virtual environment:
+   ```powershell
+   python -m venv .venv
+   .venv\Scripts\activate  # PowerShell
+   # or .venv\Scripts\activate.bat  # cmd
+   ```
 
-Set your TomTom API key:
+2. Install dependencies:
+   ```powershell
+   pip install -r requirements.txt
+   ```
 
-```powershell
-$env:TOMTOM_API_KEY="YOUR_KEY"
-```
+3. Set TomTom API key in `.env`:
+   ```
+   TOMTOM_API_KEY=your_api_key_here
+   ```
 
-Or create a `.env` file in the project root:
-
-```env
-TOMTOM_API_KEY=YOUR_KEY
-```
-
-## Train
+## Train Model
 
 ```powershell
 python train.py
 ```
 
-This will:
+Fetches live observations, builds training dataset, trains and saves model.
 
-1. fetch a live observation for each station
-2. save observations to `data/observations.csv`
-3. expand them into a training dataset
-4. train the model
-5. save `model.pkl`
-
-## Run
+## Run API
 
 ```powershell
 python app.py
 ```
 
-The API runs on port `5001`.
+Starts Flask API on port 5001.
 
+### Endpoints
 
-## Collect snapshots
+- `GET /predict/now`: Predict congestion for current time at all stations
+- `POST /predict/custom`: Predict for specific location/time (JSON body: `{"lat": float, "lng": float, "hour": int, "day_of_week": int}`)
 
-One live snapshot for all stations:
-
-```powershell
-python collect.py
-```
-
-Collect every 30 minutes for 24 hours:
+## Collect Data (Optional)
 
 ```powershell
-python collect_loop.py --interval-minutes 30 --runs 48
+python collect.py  # One snapshot
+python collect_loop.py --interval-minutes 30 --runs 24  # Continuous
 ```
 
-Collect every 30 minutes for 12 hours:
-
-```powershell
-python collect_loop.py --interval-minutes 30 --runs 24
-```
-
-## Recommended workflow
-
-1. Start collecting snapshots as early as possible.
-2. Let the collector build `data/observations.csv` over time.
-3. Retrain with `python train.py` after you have enough observations.
-4. Run the API with `python app.py`.
-
-The collector does not retrain automatically. This is intentional so you can control when the model is refreshed.
+Builds `data/observations.csv` for training.
